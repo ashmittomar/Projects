@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Classroom Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>University Classroom Booking System</h1>
+  </header>
+
+  <main>
+    <section class="booking-form">
+      <h2>Teacher Booking Panel</h2>
+      <form id="bookingForm">
+        <label for="teacherName">Teacher Name:</label>
+        <input type="text" id="teacherName" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+
+        <label for="classroom">Classroom:</label>
+        <select id="classroom" required>
+          <option value="A101">A101</option>
+          <option value="A102">A102</option>
+          <option value="B201">B201</option>
+          <option value="B202">B202</option>
+          <option value="C301">C301</option>
+        </select>
+
+        <button type="submit">Book Classroom</button>
+      </form>
+    </section>
+
+    <section class="booking-list">
+      <h2>Student View: Booked Classrooms</h2>
+      <table id="bookingTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Classroom</th>
+            <th>Subject</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Bookings will be added here dynamically -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 University Booking System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
