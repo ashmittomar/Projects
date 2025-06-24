@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    max-width: 80vw;
+    margin: auto;
+}
+footer{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+nav{
+    font-family:'Times New Roman', Times, serif;
+    display: flex;
+    font-weight: 900;
+    font-size: 20px;
+    background-color:rgb(118, 155, 211);
+    padding: 23px;
+}
+
+nav ul li{
+    list-style: none;
+    margin: 0 23px;
+}
+nav ul{
+    display: flex;
+}
+
+div.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 23px;
+}
+
+nav li a{
+    text-decoration: none;
+    color: black;
+    transition: all;
+    transition-duration: 500ms;
+}
+nav li a:hover{
+    text-decoration: none;
+    color: rgb(6, 77, 109);
+}
+
+.container h1, h2{
+    margin-bottom: 10px;
+    color: rgb(67, 67, 189);
+}
+
+.container form input[type='number'], select{
+    margin: 23px 0;
+    font-size: 25px;
+    width: 23vw;
+}
+
+.container form label{
+    font-size: 25px;
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    width: 144px;
+    padding: 5px 8px;
+    font-size: 23px;
+    background: #7c30ed;
+    color: white;
+    border-radius: 13px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.output table{
+    width: 50vw;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 20px;
+}
+
+.output{
+    display: none;
+}
