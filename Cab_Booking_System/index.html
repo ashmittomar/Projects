@@ -1,0 +1,93 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Cab Booking Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeos_5hrVO07-4ffQaAmqXpizIeXHX1mk&callback=initMap" async defer></script>
+
+</head>
+<body>
+  <header>
+    <h1>Corporate Cab Booking Portal</h1>
+    <nav>
+      <ul>
+        <li><a href="#bookings">Bookings</a></li>
+        <li><a href="#newBooking">New Booking</a></li>
+        <li><a href="#liveMap">Live Bookings</a></li>
+        <li><a href="#invoices">Invoices</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Booking Filters and Tabs -->
+    <section id="bookings">
+      <h2>Booking Dashboard</h2>
+      <div class="tabs">
+        <button onclick="showTab('ongoing')">Ongoing</button>
+        <button onclick="showTab('upcoming')">Upcoming</button>
+        <button onclick="showTab('completed')">Completed</button>
+      </div>
+      <div class="tab-content" id="ongoing"></div>
+      <div class="tab-content" id="upcoming"></div>
+      <div class="tab-content" id="completed"></div>
+    </section>
+
+    <!-- New Booking Form -->
+    <section id="newBooking">
+      <h2>Place New Booking</h2>
+      <form id="bookingForm">
+        <input type="text" placeholder="Pickup Location" required />
+        <input type="text" placeholder="Drop-off Location" required />
+        <input type="text" placeholder="Guest Name" required />
+        <input type="number" placeholder="No. of Passengers" required />
+        <input type="email" placeholder="Email ID" required />
+        <input type="tel" placeholder="Mobile Number" required />
+        <input type="text" placeholder="Address" required />
+        <select required>
+          <option disabled selected>Trip Type</option>
+          <option>Local</option>
+          <option>Outstation</option>
+        </select>
+        <input type="datetime-local" required />
+        <select required>
+          <option disabled selected>Vehicle Type</option>
+          <option>Sedan</option>
+          <option>Hatchback</option>
+          <option>SUV</option>
+          <option>Luxury</option>
+        </select>
+        <select required>
+          <option disabled selected>Select Vendor</option>
+          <option>Vendor A</option>
+          <option>Vendor B</option>
+        </select>
+        <button type="submit">Submit Booking</button>
+      </form>
+    </section>
+
+    <!-- Live Map -->
+    <section id="liveMap">
+      <h2>Live Bookings</h2>
+      <div id="mapPlaceholder" style="height: 400px; width: 100%;"></div>
+    </section>
+
+    <!-- Invoice Section -->
+    <section id="invoices">
+      <h2>Invoices & Billing</h2>
+      <div id="invoiceList">
+        <!-- Render invoices dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cab Booking Portal</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
