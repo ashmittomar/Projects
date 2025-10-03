@@ -1,93 +1,329 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
-*{
+:root {
+    --primary-color: #5d3198;
+    /* Deep Purple */
+    --secondary-color: #ffc107;
+    /* Soft Gold/Yellow */
+    --text-dark: #2c3e50;
+    --text-light: #ecf0f1;
+    --background-light: #f4f6f9;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container{
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    max-width: 80vw;
-    margin: auto;
-}
-footer{
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-}
-nav{
-    font-family:'Times New Roman', Times, serif;
-    display: flex;
-    font-weight: 900;
-    font-size: 20px;
-    background-color:rgb(118, 155, 211);
-    padding: 23px;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
 }
 
-nav ul li{
-    list-style: none;
-    margin: 0 23px;
-}
-nav ul{
+/* === Navigation Bar === */
+nav {
     display: flex;
-}
-
-div.logo{
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 0 23px;
+    background-color: var(--primary-color);
+    padding: 15px 5vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav li a{
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-light);
+}
+
+.logo i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
     text-decoration: none;
-    color: black;
-    transition: all;
-    transition-duration: 500ms;
-}
-nav li a:hover{
-    text-decoration: none;
-    color: rgb(6, 77, 109);
-}
-
-.container h1, h2{
-    margin-bottom: 10px;
-    color: rgb(67, 67, 189);
+    color: var(--text-light);
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 5px;
 }
 
-.container form input[type='number'], select{
-    margin: 23px 0;
-    font-size: 25px;
-    width: 23vw;
+nav ul li a:hover {
+    color: var(--secondary-color);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.container form label{
-    font-size: 25px;
+/* New: Active Tab Styling */
+nav ul li a.active {
+    color: var(--secondary-color);
+    background-color: #4a287a;
+    /* Slightly darker purple to signify active tab */
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
 }
 
-.container form{
+nav ul li a i {
+    margin-right: 5px;
+}
+
+/* === Tab Content Management === */
+/* Hide all tab content by default */
+.tab-content {
+    display: none;
+    /* Optional: Fade-in effect */
+    animation: fadeIn 0.5s;
+}
+
+/* Show only the active tab content */
+.tab-content.active-tab {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.btn{
-    width: 144px;
-    padding: 5px 8px;
-    font-size: 23px;
-    background: #7c30ed;
-    color: white;
-    border-radius: 13px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* === Main Container and Card (Converter, Rates, About) === */
+.container {
+    max-width: 90vw;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Ensure the card is centered within the active tab */
+.tab-content.active-tab>div {
+    max-width: 500px;
+    width: 100%;
+}
+
+.converter-card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+}
+
+/* General Styling */
+.converter-card h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.converter-card h1 i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+}
+
+/* Form Styling */
+#conversionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+input[type='number'],
+select {
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+input[type='number']:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(93, 49, 152, 0.3);
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn:hover {
+    background: #4a287a;
+    /* Slightly darker purple */
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+/* Output/Results Styling */
+.output {
+    width: 100%;
+    max-width: 700px;
+    /* Wider for the table */
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* The converter output is initially hidden by JS, the rates output is shown by default */
+}
+
+.output h2 {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.output h2 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.output table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
     margin-bottom: 15px;
 }
 
-.output table{
-    width: 50vw;
-    text-align: center;
-    border: 2px solid black;
-    font-size: 20px;
+.output thead th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
 }
 
-.output{
+.output tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ecf0f1;
+    text-align: left;
+}
+
+.output tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.api-note {
+    font-size: 0.8rem;
+    color: #95a5a6;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px dashed #ecf0f1;
+}
+
+/* Rates Tab specific styling */
+#ratesTable tbody tr:nth-child(odd) {
+    background-color: #e6f7ff;
+    /* light blue for better visibility */
+}
+
+.rates-output {
+    margin-top: 20px;
     display: none;
+    /* Initial state, will be shown after fetch */
+}
+
+
+/* About Tab specific styling */
+.about-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-card ul li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+/* Footer */
+footer {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav ul {
+        margin-top: 10px;
+    }
+
+    .converter-card,
+    .output,
+    .about-card {
+        padding: 20px;
+    }
+
+    /* Small screen adjustment for table */
+    .output thead th:nth-child(1),
+    .output tbody td:nth-child(1) {
+        /* Hide full currency name column */
+        display: none;
+    }
 }

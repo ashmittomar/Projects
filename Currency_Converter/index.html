@@ -1,57 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Converter - Convert your currency</title>
+    <title>CurrencyConvert - Your Global Currency Exchange</title>
+
+    <link rel="icon" type="image/x-icon" href="images/logo.webp">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <nav>
-        <div class="logo">MyCurrencyConvertor</div>
+        <div class="logo">
+            <i class="fas fa-coins"></i>
+            <span>CurrencyConvert</span>
+        </div>
         <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About us</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="#" class="nav-link active" data-tab="converter"><i class="fas fa-exchange-alt"></i>
+                    Converter</a></li>
+            <li><a href="#" class="nav-link" data-tab="rates"><i class="fas fa-chart-line"></i> Live Rates</a></li>
+            <li><a href="#" class="nav-link" data-tab="about"><i class="fas fa-info-circle"></i> About</a></li>
         </ul>
-
     </nav>
+
     <div class="container">
-        <h1>Choose a currency to convert</h1>
-        <form action="/action.php" method="get"> 
-        <label for="quantity">Choose a quantity: </label>
-        <input type="number" name="quantity" min="1" max="10">
-        <label for="currency">Choose a currency: </label>
-        <select name="currency">
-        <option value="INR">Indian Rupee</option>
-        <option value="USD">US dollar</option>
-        <option value="EUR">EURO</option>
-        </select>
-        
-        <button class="btn" type="submit">Submit</button>
-        </form>
-    <div class="output">
-        <h2>Here is your converted values in different currency</h2>
-    <table>
-    
-    <thead>
-        <tr>
-            <th>Currency</th>
-            <th>Currency Code</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-    
-    </table>
+        <div id="converter" class="tab-content active-tab">
+            <div class="converter-card">
+                <h1><i class="fas fa-calculator"></i> Currency Conversion Tool</h1>
+                <p class="subtitle">Quickly convert your amount to over 150+ currencies worldwide.</p>
+                <form id="conversionForm" action="#" method="get">
+                    <div class="input-group">
+                        <label for="quantity">Amount to Convert:</label>
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" max="99999" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="currency">Base Currency:</label>
+                        <select name="currency" id="currency">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                            <option value="AUD">Australian Dollar (AUD)</option>
+                            <option value="CAD">Canadian Dollar (CAD)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn convert-btn" type="submit">
+                        <i class="fas fa-sync-alt"></i> Convert
+                    </button>
+                </form>
+            </div>
+
+            <div class="output">
+                <h2><i class="fas fa-money-check-alt"></i> Converted Values</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Currency Name</th>
+                                <th>Code</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="api-note">Rates are provided by a third-party API and are for informational purposes only.</p>
+            </div>
+        </div>
+
+        <div id="rates" class="tab-content">
+            <div class="rates-card converter-card">
+                <h1><i class="fas fa-tachometer-alt"></i> Global Base Rates</h1>
+                <p class="subtitle">See real-time rates for a base currency against major world currencies.</p>
+
+                <div class="input-group rates-group">
+                    <label for="baseRateCurrency">Select Base Currency for Rates:</label>
+                    <select name="baseRateCurrency" id="baseRateCurrency">
+                        <option value="USD">US Dollar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="INR">Indian Rupee (INR)</option>
+                        <option value="GBP">British Pound (GBP)</option>
+                    </select>
+                </div>
+                <button class="btn rates-btn">Fetch Rates</button>
+
+                <div class="rates-output output">
+                    <h2>Rates relative to <span id="baseCurrencyDisplay">USD</span> (1 Unit)</h2>
+                    <div class="table-container">
+                        <table id="ratesTable">
+                            <thead>
+                                <tr>
+                                    <th>Currency</th>
+                                    <th>Code</th>
+                                    <th>Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="tab-content">
+            <div class="about-card converter-card">
+                <h1><i class="fas fa-info-circle"></i> About CurrencyConvert</h1>
+                <p>Welcome to CurrencyConvert, your reliable source for real-time currency exchange rates. We aim to
+                    provide a fast, elegant, and easy-to-use tool for all your currency conversion needs.</p>
+
+                <h3 style="margin-top: 20px;">Key Features:</h3>
+                <ul>
+                    <li>&bull; Real-time exchange rates from a reliable API.</li>
+                    <li>&bull; Conversion for over 150+ global currencies.</li>
+                    <li>&bull; Clean, responsive, and modern user interface.</li>
+                </ul>
+
+                <p style="margin-top: 20px;">**Disclaimer:** All exchange rates are for informational purposes only and
+                    are subject to change. They should not be used for trading or financial advice.</p>
+            </div>
+        </div>
     </div>
 
-    </div>
     <footer>
-        Copyright &copy; All rights reserved 
+        Copyright &copy; ashmittomar <span id="currentYear"></span> QuantumConvert | All rights reserved
     </footer>
     <script src="main.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>
