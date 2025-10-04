@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>University Classroom Booking</title>
+  <title>ResourceHub | University Booking System</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
   <header>
-    <h1>University Classroom Booking System</h1>
+    <i class="fas fa-building logo-icon"></i>
+    <h1>ResourceHub | Classroom Booking</h1>
   </header>
 
   <main>
     <section class="booking-form">
-      <h2>Teacher Booking Panel</h2>
+      <h2><i class="fas fa-user-tie"></i> Teacher Booking Panel</h2>
       <form id="bookingForm">
         <label for="teacherName">Teacher Name:</label>
-        <input type="text" id="teacherName" required>
+        <input type="text" id="teacherName" placeholder="e.g., Dr. Evelyn Reed" required>
 
         <label for="subject">Subject:</label>
-        <input type="text" id="subject" required>
+        <input type="text" id="subject" placeholder="e.g., Software Engineering Capstone" required>
 
         <label for="date">Date:</label>
         <input type="date" id="date" required>
@@ -29,19 +33,23 @@
 
         <label for="classroom">Classroom:</label>
         <select id="classroom" required>
-          <option value="A101">A101</option>
-          <option value="A102">A102</option>
-          <option value="B201">B201</option>
-          <option value="B202">B202</option>
-          <option value="C301">C301</option>
+          <option value="" disabled selected>Select a location...</option>
+          <option value="A101">A101 - Main Lecture Hall</option>
+          <option value="A102">A102 - Seminar Room</option>
+          <option value="B201">B201 - Computer Lab 1</option>
+          <option value="B202">B202 - Small Class</option>
+          <option value="C301">C301 - Auditorium West</option>
         </select>
 
-        <button type="submit">Book Classroom</button>
+        <div class="button-group">
+          <button type="submit" id="bookButton"><i class="fas fa-calendar-check"></i> Book Classroom Slot</button>
+          <button type="button" id="clearBookingsButton"><i class="fas fa-trash-alt"></i> Clear All</button>
+        </div>
       </form>
     </section>
 
     <section class="booking-list">
-      <h2>Student View: Booked Classrooms</h2>
+      <h2><i class="fas fa-calendar-alt"></i> Student View: Booked Classrooms</h2>
       <table id="bookingTable">
         <thead>
           <tr>
@@ -53,16 +61,16 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Bookings will be added here dynamically -->
         </tbody>
       </table>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 University Booking System</p>
+    <p>&copy; 2025 Made by AshmitTomar</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
